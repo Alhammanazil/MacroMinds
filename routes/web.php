@@ -27,11 +27,10 @@ Route::get('/posts/{post:slug}', function (Post $post) {
     ]);
 });
 
-Route::get('/authors', function () {
-    $authors = User::withCount('posts')->get();
-
-    return view('authors', ['title' => 'Authors', 'authors' => $authors]);
-});
+// Route::get('/authors', function () {
+//     $authors = User::withCount('posts')->get();
+//     return view('authors', ['title' => 'Authors', 'authors' => $authors]);
+// });
 
 Route::get('/authors/{user:username}', function (User $user) {
     // $posts = $user->posts->load('category', 'author');
@@ -63,8 +62,16 @@ Route::get('/contact', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [PostDashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/dashboard', [PostDashboardController::class, 'store'])
+    ->middleware(['auth', 'verified']);
+
+Route::get('/dashboard/create', [PostDashboardController::class, 'create'])
+    ->middleware(['auth', 'verified'])->name('dashboard.create');
+
+Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show'])
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
