@@ -4,7 +4,8 @@
             <article
                 class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
 
-                <a href="/dashboard" class="font-medium text-s  text-blue-400 hover:underline">&laquo; Back to all posts</a>
+                <a href="/dashboard" class="font-medium text-s  text-blue-400 hover:underline">&laquo; Back to all
+                    posts</a>
 
                 <header class="my-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
@@ -33,8 +34,8 @@
                             </div>
                         </div>
                     </address>
-                    
-                    <div class="flex gap-4 items-center">
+
+                    {{-- <div class="flex gap-4 items-center">
                     <button type="button"
                         class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
@@ -56,7 +57,7 @@
                     </svg>
                     Delete
                 </button>
-            </div>
+            </div> --}}
 
                     <h1
                         class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">

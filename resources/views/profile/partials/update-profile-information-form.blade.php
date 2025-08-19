@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -57,6 +57,29 @@
             @endif
         </div>
 
+        {{-- upload avatar --}}
+        <div>
+            <label for="avatar"
+                class="block mb-2 text-sm font-medium @error('avatar') text-red-700 dark:text-red-500 @else text-gray-800 dark:text-white @enderror">
+                Upload Avatar
+            </label>
+            <input
+                class="block w-full text-sm @error('avatar') text-red-900 border-red-500 dark:text-red-500 dark:border-red-500 dark:placeholder-red-500 @else text-gray-800 border-gray-300 dark:text-gray-400 dark:border-gray-600 dark:placeholder-gray-400 @enderror border rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:bg-gray-700"
+                aria-describedby="avatar_help" id="avatar" name="avatar" type="file"
+                accept="image/png,image/jpeg,image/jpg">
+            <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="avatar_help">Format: JPG, JPEG, PNG (Maksimal
+                2MB)</div>
+            @error('avatar')
+                <p class="mt-1 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div>
+            <img class="w-20 h-20 rounded-full"
+                src="{{ $user->avatar ? asset($user->avatar) : asset('img/default-avatar.webp') }}"
+                alt="{{ $user->name }}" id="avatar-preview">
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -67,3 +90,19 @@
         </div>
     </form>
 </section>
+
+<script>
+    const input = document.getElementById('avatar');
+    const previewPhoto = () => {
+        const file = input.files;
+        if (file) {
+            const fileReader = new FileReader();
+            const preview = document.getElementById('avatar-preview');
+            fileReader.onload = function(event) {
+                preview.setAttribute('src', event.target.result);
+            }
+            fileReader.readAsDataURL(file[0]);
+        }
+    }
+    input.addEventListener("change", previewPhoto);
+</script>

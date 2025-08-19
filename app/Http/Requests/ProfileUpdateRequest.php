@@ -33,6 +33,20 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
+            'avatar' => ['image', 'max:2048'],
+        ];
+    }
+
+    /**
+     * Get custom error messages for validation.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'avatar.image' => 'File yang diupload harus berupa gambar (JPG, JPEG, PNG, BMP, GIF, SVG, atau WEBP).',
+            'avatar.max' => 'Ukuran file avatar maksimal 2MB.',
         ];
     }
 }
