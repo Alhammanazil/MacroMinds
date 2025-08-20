@@ -1,3 +1,8 @@
+@push('style')
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+@endpush
+
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -76,7 +81,7 @@
 
         <div>
             <img class="w-20 h-20 rounded-full"
-                src="{{ $user->avatar ? asset($user->avatar) : asset('img/default-avatar.webp') }}"
+                src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('img/default-avatar.webp') }}"
                 alt="{{ $user->name }}" id="avatar-preview">
         </div>
 
@@ -91,18 +96,74 @@
     </form>
 </section>
 
-<script>
-    const input = document.getElementById('avatar');
-    const previewPhoto = () => {
-        const file = input.files;
-        if (file) {
-            const fileReader = new FileReader();
-            const preview = document.getElementById('avatar-preview');
-            fileReader.onload = function(event) {
-                preview.setAttribute('src', event.target.result);
+@push('script')
+    <script>
+        const input = document.getElementById('avatar');
+        const previewPhoto = () => {
+            const file = input.files;
+            if (file) {
+                const fileReader = new FileReader();
+                const preview = document.getElementById('avatar-preview');
+                fileReader.onload = function(event) {
+                    preview.setAttribute('src', event.target.result);
+                }
+                fileReader.readAsDataURL(file[0]);
             }
-            fileReader.readAsDataURL(file[0]);
         }
-    }
-    input.addEventListener("change", previewPhoto);
-</script>
+        input.addEventListener("change", previewPhoto);
+    </script>
+
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <script>
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginImageTransform);
+        FilePond.registerPlugin(FilePondPluginImageResize);
+
+        const inputElement = document.querySelector('#avatar');
+        const pond = FilePond.create(inputElement, {
+            acceptedFileTypes: ['image/png', 'image/jpeg', 'image/jpg'],
+            maxFileSize: '2MB',
+            imageResizeTargetWidth: 600,
+            imageResizeMode: 'contain',
+            imageResizeUpscale: false,
+            labelIdle: 'Drag & Drop your avatar or <span class="filepond--label-action">Browse</span>',
+            server: {
+                process: {
+                    url: '/upload',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    onload: (response) => {
+                        // FilePond expects just the server file identifier
+                        return response;
+                    },
+                    onerror: (response) => {
+                        console.error('Upload error:', response);
+                        return false;
+                    }
+                },
+                revert: null,
+                restore: null,
+                load: null,
+                fetch: null
+            },
+            onprocessfile: (error, file) => {
+                if (!error) {
+                    console.log('File processed successfully:', file.serverId);
+                }
+            },
+            onprocessfilerevert: (uniqueFileId) => {
+                console.log('File reverted:', uniqueFileId);
+            }
+        });
+    </script>
+@endpush

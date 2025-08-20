@@ -27,8 +27,8 @@
                                       <span class="absolute -inset-1.5"></span>
                                       <span class="sr-only">Open user menu</span>
                                       <img class="size-8 rounded-full"
-                                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                          alt="" />
+                                          src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('img/default-avatar.webp') }}"
+                                          alt="{{ Auth::user()->name }}" />
                                       <div class="text-gray-300 text-sm font-medium ml-3">{{ Auth::user()->name }}
                                       </div>
                                       <div class="ms-1 text-gray-300">
@@ -60,7 +60,7 @@
                               <a href="/profile" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                   tabindex="-1" id="user-menu-item-0">Your Profile</a>
                               <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                  tabindex="-1" id="user-menu-item-1">Settings</a>
+                                  tabindex="-1" id="user-menu-item-1">Dashboard</a>
                               <form method="POST" action="/logout">
                                   @csrf
                                   <button type="submit"
@@ -109,7 +109,7 @@
                       <div class="flex items-center px-5">
                           <div class="shrink-0">
                               <img class="size-10 rounded-full"
-                                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                  src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : asset('img/default-avatar.webp') }}"
                                   alt="{{ Auth::user()->name }}" />
                           </div>
                           <div class="ml-3">
@@ -121,7 +121,7 @@
                               class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
                               Profile</a>
                           <a href="/dashboard"
-                              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+                              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Dashboard</a>
                           <form method="POST" action="/logout">
                               @csrf
                               <button type="submit"

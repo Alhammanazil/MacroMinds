@@ -58,13 +58,13 @@
                         class="block mb-2 text-sm font-medium @error('content') text-red-700 dark:text-red-500 @else text-gray-900 dark:text-white @enderror">Content</label>
                     @error('content')
                         <textarea name="content" id="content" rows="4"
-                            class="block p-2.5 w-full text-sm text-red-900 rounded-lg border border-red-500 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-red-500 dark:placeholder-red-500 dark:text-red-500"
-                            placeholder="Write post content here">{{ old('content', $post->content) }}</textarea>
+                            class="block p-2.5 w-full text-sm text-red-900 rounded-lg border border-red-500 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-red-500 dark:placeholder-red-500 dark:text-red-500 resize-none overflow-hidden"
+                            placeholder="Write post content here" oninput="autoResize(this)">{{ old('content', $post->content) }}</textarea>
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                     @else
                         <textarea name="content" id="content" rows="4"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Write post content here">{{ old('content', $post->content) }}</textarea>
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none overflow-hidden"
+                            placeholder="Write post content here" oninput="autoResize(this)">{{ old('content', $post->content) }}</textarea>
                     @enderror
                 </div>
 
@@ -87,3 +87,21 @@
                 </div>
             </form>
         </div>
+
+        <script>
+            function autoResize(textarea) {
+                // Reset height to auto to get the correct scrollHeight
+                textarea.style.height = 'auto';
+
+                // Set the height to scrollHeight with some padding
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }
+
+            // Auto resize on page load for existing content
+            document.addEventListener('DOMContentLoaded', function() {
+                const textarea = document.getElementById('content');
+                if (textarea && textarea.value.trim() !== '') {
+                    autoResize(textarea);
+                }
+            });
+        </script>

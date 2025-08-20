@@ -4,14 +4,14 @@
             <article
                 class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
 
-                <a href="/dashboard" class="font-medium text-s  text-blue-400 hover:underline">&laquo; Back to all
-                    posts</a>
+                <a href="/dashboard" class="font-medium text-s text-black hover:text-gray-700 hover:underline">&laquo;
+                    Back to all posts</a>
 
                 <header class="my-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
                         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                             <img class="mr-4 w-16 h-16 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                                src="{{ $post->author->avatar ? asset($post->author->avatar) : asset('img/default-avatar.webp') }}"
                                 alt="{{ $post->author->name }}" />
                             <div>
                                 {{-- name --}}

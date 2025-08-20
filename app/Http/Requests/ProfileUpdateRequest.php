@@ -33,7 +33,24 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
-            'avatar' => ['image', 'max:2048'],
+            'avatar' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    // Skip validation if it's HTML content (error response from FilePond)
+                    if (is_string($value) && str_contains($value, '<!DOCTYPE')) {
+                        return;
+                    }
+
+                    // Validate file upload
+                    if ($this->hasFile('avatar')) {
+                        $rules = ['image', 'max:2048'];
+                        $validator = validator([$attribute => $value], [$attribute => $rules]);
+                        if ($validator->fails()) {
+                            $fail($validator->errors()->first($attribute));
+                        }
+                    }
+                }
+            ],
         ];
     }
 
