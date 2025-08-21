@@ -14,21 +14,21 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Web Development',
-            'slug' => 'web-development',
-            'color' => 'bg-red-100'
+            'name' => 'Technology & Innovation',
+            'slug' => 'technology-innovation',
+            'color' => 'bg-emerald-100'
         ]);
 
         Category::create([
-            'name' => 'Mobile Development',
-            'slug' => 'mobile-development',
+            'name' => 'Economics & Finance',
+            'slug' => 'economics-finance',
             'color' => 'bg-blue-100'
         ]);
 
         Category::create([
-            'name' => 'Artificial Intelligence',
-            'slug' => 'artificial-intelligence',
-            'color' => 'bg-green-100'
+            'name' => 'Pop Culture Analysis',
+            'slug' => 'pop-culture-analysis',
+            'color' => 'bg-purple-100'
         ]);
     }
 }

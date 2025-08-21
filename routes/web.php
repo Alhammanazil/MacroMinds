@@ -17,7 +17,11 @@ Route::get('/posts', function () {
     if (request('search')) {
         $posts->where('title', 'like', '%' . request('search') . '%');
     }
-    return view('posts', ['title' => 'Blog', 'posts' => $posts->get()]);
+
+    return view('posts', [
+        'title' => 'Blog',
+        'posts' => $posts->paginate(9)->withQueryString()
+    ]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
@@ -33,19 +37,17 @@ Route::get('/posts/{post:slug}', function (Post $post) {
 // });
 
 Route::get('/authors/{user:username}', function (User $user) {
-    // $posts = $user->posts->load('category', 'author');
     return view('posts', [
         'title' => $user->posts()->count() .
             ' Articles by ' . $user->name,
-        'posts' => $user->posts
+        'posts' => $user->posts()->latest()->paginate(9)
     ]);
 });
 
 Route::get('/categories/{category:slug}', function (Category $category) {
-    // $posts = $category->posts->load('category', 'author');
     return view('posts', [
         'title' => 'Category: ' . $category->name,
-        'posts' => $category->posts
+        'posts' => $category->posts()->latest()->paginate(9)
     ]);
 });
 

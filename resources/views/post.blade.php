@@ -58,9 +58,9 @@ URL: https://flowbite.com/docs/components/typography/
                     </h1>
                 </header>
 
-                <p>
-                    {{ $post['content'] }}
-                </p>
+                <div>
+                    {!! $post['content'] !!}
+                </div>
 
             </article>
         </div>

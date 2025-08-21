@@ -52,7 +52,7 @@ class PostDashboardController extends Controller
         Validator::make($request->all(), [
             'title' => 'required|string|max:255|unique:posts|min:5|max:255',
             'category_id' => 'required|exists:categories,id',
-            'content' => 'required|string',
+            'content' => 'required|min:50',
         ], [
             'title.required' => 'Please enter post title.',
             'category_id.required' => 'Please select a post category.',
@@ -98,11 +98,17 @@ class PostDashboardController extends Controller
     public function update(Request $request, Post $post)
     {
         // Validation
-        $request->validate([
-            'title' => 'required|min:5|max:255|string|max:255|unique:posts,' . $post->id,
+        Validator::make($request->all(), [
+            'title' => 'required|min:5|max:255|unique:posts,title,' . $post->id,
             'category_id' => 'required|exists:categories,id',
-            'content' => 'required|string',
-        ]);
+            'content' => 'required|min:50',
+        ], [
+            'title.required' => 'Please enter post title.',
+            'title.unique' => 'This title has already been taken.',
+            'category_id.required' => 'Please select a post category.',
+            'content.required' => 'Please enter post content.',
+            'content.min' => 'Post content must be at least 50 characters.',
+        ])->validate();
 
         // Update Post
         $post->update([
