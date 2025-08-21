@@ -1,61 +1,172 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="public/img/macro_minds.png" width="200" alt="MacroMinds Logo">
 </p>
 
-## About Laravel
+<h1 align="center">MacroMinds</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+    <em>Ideas Beyond Trends - Where Technology, Economics, and Culture Converge</em>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+<a href="https://github.com/Alhammanazil/wpucourse_laravel-12/actions"><img src="workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Laravel Version"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## About MacroMinds
 
-## Learning Laravel
+MacroMinds is a modern blog platform built with Laravel that explores the interconnected relationships between technology, economics, and popular culture. We provide deep analysis and global perspectives on emerging trends, helping readers understand the bigger picture beyond surface-level news.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Content Pillars
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **🚀 Technology & Innovation**: Exploring breakthrough technologies like AI, quantum computing, and blockchain that reshape our digital future
+-   **📈 Economics & Finance**: Analyzing global markets, cryptocurrency trends, and economic patterns that drive worldwide change
+-   **🎭 Pop Culture Analysis**: Understanding how entertainment, media, and cultural movements influence society and economy
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Features
 
-## Laravel Sponsors
+-   **Modern Design**: Clean, professional interface with emerald green branding
+-   **Responsive Layout**: Optimized for desktop, tablet, and mobile devices
+-   **Rich Content**: Support for images, tables, and multimedia content
+-   **Category System**: Organized content across three main pillars
+-   **SEO Optimized**: Built with search engine optimization in mind
+-   **Fast Performance**: Leveraging Laravel's robust framework for optimal speed
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Technology Stack
 
-### Premium Partners
+MacroMinds is built using modern web technologies:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **Backend**: Laravel 12.x (PHP 8.4+)
+-   **Frontend**: Tailwind CSS, Alpine.js
+-   **Database**: SQLite (development), MySQL/PostgreSQL (production)
+-   **Assets**: Vite for modern asset compilation
+-   **Authentication**: Laravel Breeze
+-   **Testing**: Pest PHP
 
-## Contributing
+## Installation & Setup
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Prerequisites
 
-## Code of Conduct
+-   PHP 8.4 or higher
+-   Composer
+-   Node.js & NPM
+-   SQLite (for development)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Quick Start
 
-## Security Vulnerabilities
+1. **Clone the repository**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```bash
+    git clone https://github.com/Alhammanazil/MacroMinds.git
+    cd MacroMinds
+    ```
+
+2. **Install dependencies**
+
+    ```bash
+    composer install
+    npm install
+    ```
+
+3. **Environment setup**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Database setup**
+
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+5. **Start development server**
+
+    ```bash
+    php artisan serve
+    npm run dev
+    ```
+
+6. **Visit your application**
+   Open [http://localhost:8000](http://localhost:8000) in your browser
+
+## Project Structure
+
+```
+wpublog/
+├── app/
+│   ├── Http/Controllers/     # Application controllers
+│   ├── Models/              # Eloquent models
+│   └── Policies/           # Authorization policies
+├── database/
+│   ├── migrations/         # Database migrations
+│   ├── seeders/           # Database seeders
+│   └── factories/         # Model factories
+├── resources/
+│   ├── views/             # Blade templates
+│   ├── css/              # Stylesheets
+│   └── js/               # JavaScript files
+└── routes/               # Application routes
+```
+
+<!-- ## Content Management
+
+The blog features a comprehensive seeding system that populates the database with:
+
+-   **15 Professional Articles**: 5 articles each across Technology, Economics, and Pop Culture
+-   **Rich Media Content**: Articles include Unsplash images and data tables
+-   **Author Profiles**: Indonesian authors with professional backgrounds
+-   **Category System**: Color-coded categories with icons
+
+## Deployment
+
+### Production Checklist
+
+-   [ ] Set `APP_ENV=production` in `.env`
+-   [ ] Configure production database
+-   [ ] Set up proper web server (Nginx/Apache)
+-   [ ] Configure SSL certificate
+-   [ ] Set up backup system
+-   [ ] Configure monitoring
+
+## Acknowledgments
+
+-   **Laravel Team**: For the excellent framework
+-   **Tailwind CSS**: For the utility-first CSS framework
+-   **Unsplash**: For high-quality stock photography
+-   **WPU Course Community**: For inspiration and support
+
+## Screenshots
+
+### Homepage
+
+![Homepage](docs/screenshots/homepage.png)
+
+### Article Page
+
+![Article](docs/screenshots/article.png)
+
+### About Page
+
+![About](docs/screenshots/about.png)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+If you found this project helpful, please consider:
+
+-   ⭐ Starring the repository
+-   🐛 Reporting bugs
+-   💡 Suggesting new features
+-   📝 Contributing to documentation
+
+---
+
+<p align="center">
+    <strong>MacroMinds</strong> - Connecting the dots in a complex world
+</p> -->
