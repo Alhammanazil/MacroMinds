@@ -110,7 +110,25 @@ wpublog/
 └── routes/               # Application routes
 ```
 
-<!-- ## Content Management
+## Screenshots
+
+### Homepage
+The homepage features a modern hero section with gradient background and clear navigation to explore the three main content categories.
+
+![Homepage](docs/screenshots/home.png)
+
+### Blog Posts Page
+Browse through our collection of articles organized by categories - Technology & Innovation, Economics & Finance, and Pop Culture Analysis.
+
+![Blog Posts](docs/screenshots/blog.png)
+
+### Article Detail Page
+Individual articles feature clean typography, author information, and engaging content with multimedia support.
+
+![Article Detail](docs/screenshots/posts.png)
+
+
+## Content Management
 
 The blog features a comprehensive seeding system that populates the database with:
 
@@ -137,20 +155,6 @@ The blog features a comprehensive seeding system that populates the database wit
 -   **Unsplash**: For high-quality stock photography
 -   **WPU Course Community**: For inspiration and support
 
-## Screenshots
-
-### Homepage
-
-![Homepage](docs/screenshots/homepage.png)
-
-### Article Page
-
-![Article](docs/screenshots/article.png)
-
-### About Page
-
-![About](docs/screenshots/about.png)
-
 ## License
 
 This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
@@ -168,4 +172,4 @@ If you found this project helpful, please consider:
 
 <p align="center">
     <strong>MacroMinds</strong> - Connecting the dots in a complex world
-</p> -->
+</p>
