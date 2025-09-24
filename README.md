@@ -9,7 +9,6 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/Alhammanazil/wpucourse_laravel-12/actions"><img src="workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Laravel Version"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
 </p>
